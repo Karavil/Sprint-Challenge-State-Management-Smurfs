@@ -1,16 +1,26 @@
-import React, { Component } from "react";
+import React, { useEffect } from "react";
 import "./App.css";
-class App extends Component {
-  render() {
-    return (
+
+import { useSelector, useDispatch, shallowEqual } from "react-redux";
+import { getSmurfs } from "../actions/smurfActions";
+
+const App = () => {
+   const dispatch = useDispatch();
+
+   const { smurfs, loading, error } = useSelector(state => state, shallowEqual);
+
+   useEffect(() => {
+      dispatch(getSmurfs());
+   }, []);
+
+   const Smurfs = smurfs.map(smurf => <p key={smurf.id}>{smurf.name}</p>);
+
+   return (
       <div className="App">
-        <h1>SMURFS! 2.0 W/ Redux</h1>
-        <div>Welcome to your state management version of Smurfs!</div>
-        <div>Start inside of your `src/index.js` file!</div>
-        <div>Have fun!</div>
+         {error ? <h1>Error</h1> : <></>}
+         {loading && !error ? <h1>Loading</h1> : <>{Smurfs}</>}
       </div>
-    );
-  }
-}
+   );
+};
 
 export default App;

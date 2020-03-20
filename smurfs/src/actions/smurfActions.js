@@ -4,8 +4,6 @@ const smurfs = axios.create({
    baseURL: "http://localhost:3333"
 });
 
-export const NEW_SMURF = "NEW_SMURF";
-export const DEL_SMURF = "DEL_SMURF";
 export const SMURFS_UPDATE = "UPDATE_SMURFS";
 export const SMURFS_CLEAR = "CLEAR_SMURFS";
 export const SMURFS_ERROR = "SMURF_ERROR";
@@ -37,7 +35,7 @@ export const addSmurf = ({ name, age, height }) => dispatch => {
          dispatch(getSmurfs());
       })
       .catch(err => {
-         dispatch({ type: SMURFS_ERROR, payload: true });
+         console.log("Error adding smurf", err);
       });
 };
 

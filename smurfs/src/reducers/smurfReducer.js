@@ -2,9 +2,7 @@ import {
    SMURFS_UPDATE,
    SMURFS_CLEAR,
    SMURFS_ERROR,
-   SMURFS_LOADING,
-   NEW_SMURF,
-   DEL_SMURF
+   SMURFS_LOADING
 } from "../actions/smurfActions";
 
 const initialState = {

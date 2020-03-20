@@ -40,3 +40,10 @@ export const addSmurf = ({ name, age, height }) => dispatch => {
          dispatch({ type: SMURFS_ERROR, payload: true });
       });
 };
+
+export const delSmurf = id => dispatch => {
+   smurfs
+      .delete("/smurfs/" + id)
+      .then(res => dispatch(getSmurfs()))
+      .catch(err => console.log("Error deleting smurf", err));
+};

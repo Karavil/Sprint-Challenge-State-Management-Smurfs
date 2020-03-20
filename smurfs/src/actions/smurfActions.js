@@ -25,3 +25,18 @@ export const getSmurfs = () => dispatch => {
          dispatch({ type: SMURFS_ERROR, payload: true });
       });
 };
+
+export const addSmurf = ({ name, age, height }) => dispatch => {
+   smurfs
+      .post("/smurfs", {
+         name,
+         age,
+         height
+      })
+      .then(res => {
+         dispatch(getSmurfs());
+      })
+      .catch(err => {
+         dispatch({ type: SMURFS_ERROR, payload: true });
+      });
+};

@@ -12,6 +12,10 @@ const SmurfCard = styled.div`
    border: 1px solid #d0d0d0;
    padding: 10px 5px;
    margin: 10px 0;
+
+   &:hover {
+      cursor: pointer;
+   }
 `;
 
 const App = () => {
